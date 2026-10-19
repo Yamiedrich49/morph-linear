@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#091525">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="小さな光の生き物たちと暮らし、線形変換でお手伝いする、5分間の箱庭プロトタイプ。">
+<title>ひかりのすみか — MORPH / LINEAR | Living Prototype 0.1</title>
+<style>
+:root{--bg:#081321;--pane:#112236;--ink:#f1f5fa;--muted:#9bafc4;--edge:#31495e;--coral:#ffa69e;--blue:#a4dcff;--violet:#d3b3fc;--mint:#a3dfce;--honey:#f8d59d}
+*{box-sizing:border-box}html{background:var(--bg);min-height:100%;color-scheme:dark}body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;background:radial-gradient(ellipse at 35% 0%,#20364a8c,transparent 49%),radial-gradient(ellipse at 85% 75%,#30294451,transparent 39%),var(--bg);min-height:100dvh;-webkit-font-smoothing:antialiased}button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible{outline:2px solid #b0e6ff;outline-offset:3px}button:disabled{opacity:.5;cursor:default}a{color:inherit}.wrap{max-width:1130px;margin:auto;padding:16px 18px 28px}.top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:17px}.brand{display:flex;align-items:center;gap:11px}.mark{width:43px;height:43px;position:relative;border-radius:18px 19px 16px 19px;background:linear-gradient(140deg,#bedcf5,#6c9dc2);transform:rotate(-8deg);box-shadow:0 0 27px #99cffa48,inset -6px -8px 12px #628bb35c}.mark:before,.mark:after{content:"";position:absolute;width:4px;height:6px;top:19px;border-radius:100%;background:#253850}.mark:before{left:14px}.mark:after{left:27px}.brand strong{display:block;font-size:19px;letter-spacing:.06em;font-weight:650}.brand small{display:block;color:#8aabc0;font-size:9px;letter-spacing:.21em;margin-top:4px}.header-right{text-align:right;display:flex;gap:8px;align-items:center}.tiny-tag{font-size:9px;letter-spacing:.13em;padding:7px 10px;border:1px solid #3b5167;border-radius:50px;color:#b7cddd;white-space:nowrap}.small-icon{border:1px solid #314b65;border-radius:50%;background:#13273a;color:#d5e6f3;width:36px;height:36px;display:grid;place-items:center;font-size:17px}.viewhead{margin-bottom:11px;display:flex;justify-content:space-between;align-items:end;gap:10px}.eyebrow{font-size:10px;letter-spacing:.2em;color:#95b8cf;font-weight:650}.viewhead h1{font-size:22px;font-weight:650;margin:5px 0 0;letter-spacing:.03em}.note-pill{font-size:10px;color:#cee6d7;border:1px solid #426b69;border-radius:18px;padding:7px 10px;background:#153c3b7a;white-space:nowrap}.cols{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:17px;align-items:start}.scene-card{overflow:hidden;border:1px solid #37516a;border-radius:23px;background:#0b1c2b;box-shadow:0 18px 65px #0007,0 0 90px #29537d0e;min-width:0}.canvas-wrap{position:relative;overflow:hidden}.scene{display:block;width:100%;height:auto;aspect-ratio:900/950;touch-action:manipulation}.scene.puzzle{aspect-ratio:900/850;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}.scene.dragging{cursor:grabbing}.canvas-corner{position:absolute;left:17px;top:15px;color:#b5d0dd;font-size:10px;letter-spacing:.18em;pointer-events:none;text-shadow:0 1px 8px #000}.canvas-badge{position:absolute;right:16px;top:14px;padding:7px 11px;border-radius:30px;background:#091a2bcc;border:1px solid #526475;font-size:10px;color:#c7deeb;pointer-events:none}.scene-hint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid #64758995;background:#132a3ede;padding:9px 13px;border-radius:30px;color:#dbe7f2;font-size:11px;pointer-events:none;transition:opacity .2s;text-align:center}.scene-hint.hide{opacity:0}.scene-foot{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:13px 15px;border-top:1px solid #344a60;background:#102236;min-height:67px}.context-line{min-width:0}.context-line strong{font-size:13px;display:block}.context-line small{font-size:11px;line-height:1.7;color:#adc2d4;display:block;margin-top:3px}.controls{display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.btn{border:1px solid #3d566c;border-radius:12px;background:#1b3449;color:#edf7ff;padding:10px 14px;min-height:39px;font-size:12px;font-weight:660;line-height:1.3;white-space:nowrap}.btn:active{filter:brightness(1.18)}.btn.primary{background:linear-gradient(135deg,#d9ecdf,#abd9cc);color:#17353d;border-color:#c6ebdf;box-shadow:0 7px 24px #4da89528}.btn.gold{background:linear-gradient(130deg,#fee2ae,#efc483);color:#423328;border-color:#ffe5b6}.btn.quiet{background:#182c3eaa;color:#b9cedd}.btn.round{border-radius:100px}.side{display:flex;flex-direction:column;gap:12px}.card{border:1px solid #354b65;border-radius:19px;padding:18px;background:linear-gradient(150deg,#152b40b8,#101d31e8);box-shadow:inset 0 1px 0 #ffffff08}.card h2{font-size:15px;margin:3px 0 11px;line-height:1.4}.card p{font-size:12px;line-height:1.92;color:#b6c8d8;margin:8px 0}.card .section{font-size:10px;letter-spacing:.18em;color:#9ab6cb;font-weight:680}.line{height:1px;background:#30465d;margin:14px 0}.task-row{display:flex;align-items:flex-start;gap:11px}.task-avatar{width:47px;height:47px;border-radius:14px;background:radial-gradient(circle at 25% 22%,#ffe3df,#ffb1a7 62%,#a9687d);display:grid;place-items:center;box-shadow:0 0 20px #ffa8aa32;flex:0 0 47px;color:#263345;font-size:21px}.task-avatar.blue{background:linear-gradient(140deg,#c1ebff,#7babd2)}.tasktext{font-size:12px;line-height:1.8;color:#c4d4e2}.tasktext b{font-size:14px;color:#f2f6f7}.spacebetween{display:flex;justify-content:space-between;align-items:center;gap:10px}.soft-label{display:inline-block;font-size:10px;color:#acc4d5;border:1px solid #3e5a6d;padding:4px 8px;border-radius:30px}.quest-actions{display:flex;gap:8px;margin-top:15px;flex-wrap:wrap}.quest-actions .btn{flex:1}.habit-note{padding:13px 14px;border-radius:14px;background:#172d3d;border:1px solid #315164;color:#bfd6e1;font-size:11px;line-height:1.8}.habit-note strong{color:#e7f5ee}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.stat{font-size:13px;color:#dce9f3}.stat strong{color:#fce2b2;font-size:18px}.matrixbox{display:grid;grid-template-columns:27px 1fr;align-items:center;gap:8px;max-width:194px;margin:8px auto}.mat-title{font-family:Georgia,serif;font-size:25px;font-style:italic}.mat-inner{display:grid;grid-template-columns:1fr 1fr;gap:8px 17px;border-left:2px solid #a3bcd3;border-right:2px solid #a3bcd3;padding:5px 11px;text-align:center;font:21px Georgia,serif;font-variant-numeric:tabular-nums}.matred{color:var(--coral)}.matblue{color:var(--blue)}.micronote{font-size:10px;color:#9eb6c9;line-height:1.8}.goal-list{margin:9px 0 0;display:grid;gap:8px}.goal-item{display:flex;gap:9px;align-items:center;font-size:11px;color:#cbd8e6}.orb{height:10px;width:10px;display:inline-block;border-radius:50%;box-shadow:0 0 10px currentColor}.calm{margin-top:17px;font-size:10px;color:#819caf;display:flex;justify-content:space-between;gap:8px;line-height:1.6}.calm a{text-decoration:underline;text-underline-offset:4px}.results{position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,#193d43df,#081626eb 72%);z-index:5;display:flex;justify-content:center;align-items:center;text-align:center;padding:23px;opacity:0;pointer-events:none;transition:opacity .5s}.results.show{opacity:1;pointer-events:auto}.result-panel{width:min(100%,390px);border:1px solid #79cbb6a8;padding:31px 20px;border-radius:23px;background:#143342dc;box-shadow:0 20px 65px #0006}.result-burst{font-size:40px;filter:drop-shadow(0 0 18px #a8f6cf);line-height:1.4}.result-panel h2{font-size:23px;margin:11px 0;letter-spacing:.06em}.result-panel p{font-size:13px;color:#cee3e1;line-height:2}.result-panel .btn{margin-top:12px;width:100%}.micro{font-size:10px;color:#b2c8d1;margin-top:11px}.mini-progress{height:5px;border-radius:100px;background:#1e364a;margin:12px 0 4px;overflow:hidden}.mini-progress i{display:block;width:20%;height:100%;background:#aadfc8;border-radius:100px}.toolsrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}.toolsrow .btn{flex:1}.banner{margin-top:10px;padding:10px 13px;background:#2342399c;border:1px solid #6687757a;border-radius:12px;font-size:11px;color:#d0f1df;line-height:1.65}.hidden{display:none!important}.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(15px);border:1px solid #6b9c97;background:#173a42f0;color:#e2fff2;padding:11px 18px;border-radius:100px;font-size:12px;opacity:0;pointer-events:none;transition:transform .25s,opacity .25s;z-index:20;white-space:nowrap;box-shadow:0 8px 30px #0005;max-width:90%;overflow:hidden;text-overflow:ellipsis}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.sound-btn{padding:0}.footlink{font-size:10px;color:#7595ad;text-align:center;margin:20px auto 0;line-height:1.8}.footlink a{color:#b6d5e5}.preview-note{display:flex;align-items:center;gap:9px;background:#203e47b0;border:1px solid #527476;border-radius:11px;padding:9px 12px;font-size:11px;color:#dcf1df;line-height:1.5}.mathline{font:italic 15px Georgia,serif;text-align:center;color:#d4cbef;padding:12px;background:#1e3048;border-radius:10px}.progressline{font-size:10px;letter-spacing:.08em;color:#97b2c8;margin-top:5px}
+@media(max-width:860px){.cols{grid-template-columns:1fr}.wrap{max-width:570px;padding:13px 13px 25px}.side{display:grid;grid-template-columns:1fr 1fr}.card{padding:16px}.top{margin-bottom:15px}.scene-card{border-radius:19px}}
+@media(max-width:540px){.side{grid-template-columns:1fr}.brand strong{font-size:17px}.brand small{font-size:8px}.mark{width:37px;height:37px;border-radius:16px}.mark:before,.mark:after{top:16px}.mark:before{left:12px}.mark:after{left:23px}.tiny-tag{display:none}.viewhead h1{font-size:20px}.scene-foot{padding:12px 13px;align-items:start;flex-wrap:wrap}.context-line{width:100%}.controls{width:100%}.controls .btn{flex:1}.canvas-corner{left:12px;top:14px;font-size:9px}.canvas-badge{font-size:9px;padding:6px 8px}.scene-hint{bottom:12px;font-size:10px;padding:8px 10px}.side{gap:10px}.card{padding:16px}.footlink{margin-top:16px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top"><div class="brand"><span class="mark" aria-hidden="true"></span><div><strong>ひかりのすみか</strong><small>MORPH / LINEAR · A LIVING WORLD</small></div></div><div class="header-right"><span class="tiny-tag">PROTOTYPE 0.1</span><button class="small-icon sound-btn" id="sound" aria-label="音を切り替え" title="音を切り替え">♪</button></div></header>
+  <section class="viewhead"><div><div class="eyebrow" id="sceneTag">YOUR LITTLE GARDEN</div><h1 id="viewTitle">ふたりの、小さな庭。</h1></div><div class="note-pill" id="scenePill">✦ はじめての日</div></section>
+  <div class="cols">
+    <section class="scene-card" aria-label="ゲーム画面">
+      <div class="canvas-wrap">
+        <canvas class="scene" id="game" width="900" height="950" aria-label="小さな庭。生き物をタップして触れ合い、種の植え場所を選べます。"></canvas>
+        <span class="canvas-corner" id="canvasCorner">THE LUMINOUS GARDEN</span><span class="canvas-badge" id="canvasBadge">HOME · 01</span>
+        <div id="hint" class="scene-hint">赤い子をタップしてみよう ✦</div>
+        <div id="results" class="results" role="dialog" aria-modal="true" aria-labelledby="resultTitle"><div class="result-panel"><div class="result-burst">✦ 🌱 ✦</div><div class="eyebrow">A LITTLE MIRACLE</div><h2 id="resultTitle">光が、とどいた！</h2><p id="resultDescription">赤い子がうれしそうに実を食べた。<br>紫の光が花を灯し、小さな光のたねが生まれた。</p><div class="soft-label" id="resultSeed">光のたね × 1</div><button class="btn primary" id="backAfterWin">庭にもどって、たねを植える →</button><div class="micro">大きなクリア画面ではなく、暮らしの続きへ。</div></div></div>
+      </div>
+      <div class="scene-foot">
+        <div class="context-line"><strong id="footTitle">今日は、どんな一日かな。</strong><small id="footText">赤と青が、のんびり暮らしている。</small></div>
+        <div class="controls" id="homeControls"><button class="btn quiet" id="previewGrowth">翌日の姿を見る</button><button class="btn primary" id="startTask">赤い子を手伝う →</button></div>
+        <div class="controls hidden" id="tuneControls"><button class="btn quiet" id="leaveTune">庭へ</button><button class="btn quiet" id="undoTune">↶ 戻す</button><button class="btn" id="resetTune">リセット</button></div>
+      </div>
+    </section>
+    <aside class="side">
+      <section class="card" id="gardenCard"><div class="spacebetween"><span class="section">TODAY IN THE GARDEN</span><span class="soft-label" id="taskLabel">お手伝い · 01</span></div><h2 id="gardenTitle">赤い子が、実を見つけた。</h2><div class="task-row"><div class="task-avatar" aria-hidden="true">•ᴗ•</div><div class="tasktext" id="gardenDesc"><b>「あの光の実、おいしそう！」</b><br>届かない実があるみたい。空間を少し伸ばして、手伝ってみよう。</div></div><div class="quest-actions" id="gardenActions"><button class="btn primary" id="sideStart">お手伝いをはじめる</button></div><div id="seedInfo" class="banner hidden">光のたねを持っているよ。庭にある光る輪から、植える場所を選ぼう。</div><div class="line"></div><div class="row"><span class="section">MY LITTLE WORLD</span><span class="stat" id="seedStatus">✦ たね 0個</span></div><div class="mini-progress"><i id="growthLine"></i></div><p class="micronote" id="gardenGrowth">ここでの小さな出来事は、次に訪れたときも残ります。</p></section>
+      <section class="card hidden" id="tuneCard"><div class="spacebetween"><span class="section">A LITTLE ACT OF TUNING</span><span class="soft-label" id="modeName">お手伝い</span></div><h2 id="tuneTitle">赤い子に、光の実を。</h2><p id="tuneHelp">赤い光の分身を、右側にある実まで引っ張ろう。紫の光は、赤と青の動きに連動するよ。</p><div class="goal-list" id="goalList"><div class="goal-item"><span class="orb" style="background:var(--coral);color:var(--coral)"></span>赤 → 光の実 (2, 0)</div><div class="goal-item"><span class="orb" style="background:var(--violet);color:var(--violet)"></span>紫 → 光の花 (2, 1)</div></div><div class="toolsrow"><button class="btn quiet" id="toggleFree">自由にためす</button><button class="btn quiet hidden" id="rotateLeft">↶ 15°</button><button class="btn quiet hidden" id="scaleMore">＋ 拡大</button></div><div class="line"></div><span class="section">YOUR TOUCH → MATRIX</span><div class="matrixbox"><span class="mat-title">A =</span><div class="mat-inner"><span class="matred" id="m11">1.00</span><span class="matblue" id="m12">0.00</span><span class="matred" id="m21">0.00</span><span class="matblue" id="m22">1.00</span></div></div><div class="row"><span class="micronote">面積倍率 |det A|</span><strong id="det" style="font-family:Georgia,serif">1.00</strong></div><div class="mathline">A(e₁ + e₂) = Ae₁ + Ae₂</div><p class="micronote">調律では原点は固定。赤＝第1列、青＝第2列、紫＝2列の和。光の実と花は、変換されない固定の目標です。</p></section>
+      <section class="card"><div class="section">A QUIET PLACE TO RETURN TO</div><h2>5分だけでも、眺めるだけでも。</h2><p>何日空いても大丈夫。生き物がいなくなったり、植物が枯れたりしない。前にしたことが、静かに庭に残る。</p><div class="habit-note"><strong>今回の体験</strong><br>① 庭で生き物に触れる　② 空間を調律する　③ 種を植える　④ 次の訪問で変化を見る</div><div class="toolsrow"><button class="btn quiet" id="restart">最初からやり直す</button></div></section>
+    </aside>
+  </div>
+  <div class="footlink">LIVING PROTOTYPE · v0.1 · 動作・生活ループの検証用<br><a href="morph-linear-touchlab.html" id="labLink">以前のTouch Lab（01〜03）はこちら ↗</a></div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),can=$('game'),ctx=can.getContext('2d');
+const GW=900,GH=950,PW=900,PH=850;
+const C={coral:'#ffa69e',blue:'#a4dcff',violet:'#d3b3fc',mint:'#a3dfce',gold:'#f8d59d',ink:'#e9f2fa'};
+const KEY='morph-linear-living-v01';
+const baseline=()=>({version:1,taskDone:false,seedCount:0,plots:[null,null,null],tuneA:[1,0,0,1],interactions:0});
+let saved=baseline(),saveOkay=true;
+try{const old=JSON.parse(localStorage.getItem(KEY)||'null');if(old&&old.version===1){saved={...baseline(),...old};if(!Array.isArray(saved.plots)||saved.plots.length!==3)saved.plots=[null,null,null];if(!Array.isArray(saved.tuneA)||saved.tuneA.length!==4)saved.tuneA=[1,0,0,1];}}catch(err){saveOkay=false;}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(saved));saveOkay=true}catch(err){saveOkay=false}}
+let scene='garden',free=false,preview=false,needPlant=false,frame=0,lastTime=0,toastTimer=null,active=null,history=[],win=false;
+const pointers=new Map();let stageStart=null;
+let A=saved.tuneA.slice(),audioOn=false,audioCtx=null;
+let hintUntil=0;
+const plotSpots=[{x:428,y:794},{x:590,y:797},{x:744,y:782}];
+let folk=[{id:'red',x:310,y:634,baseX:310,targetX:310,phase:.2,moveAt:0,lookUntil:0,hopUntil:0},{id:'blue',x:536,y:653,baseX:536,targetX:536,phase:2.1,moveAt:0,lookUntil:0,hopUntil:0}];
+const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+const mm=(B,M)=>[B[0]*M[0]+B[1]*M[2],B[0]*M[1]+B[1]*M[3],B[2]*M[0]+B[3]*M[2],B[2]*M[1]+B[3]*M[3]];
+const vapply=(M,x,y)=>[M[0]*x+M[1]*y,M[2]*x+M[3]*y];
+const fmt=v=>Math.abs(v)<.004?'0.00':Number(v).toFixed(2);
+const progress=()=>saved.plots.filter(Boolean).length;
+function sound(n=1){if(!audioOn)return;try{audioCtx ||=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();const t=audioCtx.currentTime;for(let i=0;i<n;i++){const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.setValueAtTime(520+i*148,t+i*.09);g.gain.setValueAtTime(.0001,t+i*.09);g.gain.exponentialRampToValueAtTime(.028,t+i*.09+.01);g.gain.exponentialRampToValueAtTime(.0001,t+i*.09+.35);o.connect(g);g.connect(audioCtx.destination);o.start(t+i*.09);o.stop(t+i*.09+.37);}}catch(err){}}
+function toast(msg){const e=$('toast');e.textContent=msg;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),2400)}
+function setCanvasScene(s){scene=s;const p=s==='tune';can.width=p?PW:GW;can.height=p?PH:GH;can.classList.toggle('puzzle',p);can.setAttribute('aria-label',p?'調律盤。赤い光の分身をドラッグし、自由実験では二本指で回転・拡大できます。':'小さな庭。生き物をタップするか、光る植え場所を選んでください。');$('results').classList.remove('show');$('gardenCard').classList.toggle('hidden',p);$('tuneCard').classList.toggle('hidden',!p);$('homeControls').classList.toggle('hidden',p);$('tuneControls').classList.toggle('hidden',!p);$('sceneTag').textContent=p?'TUNE THE WORLD':'YOUR LITTLE GARDEN';$('viewTitle').textContent=p?'光の道を、調律しよう。':'ふたりの、小さな庭。';$('scenePill').textContent=p?'✦ 光の調律':'✦ ひかりの庭';$('canvasCorner').textContent=p?'LINEAR TRANSFORMATION':'THE LUMINOUS GARDEN';$('canvasBadge').textContent=p?'TUNING · 01':'HOME · 01';$('hint').classList.remove('hide');$('hint').textContent=p?'赤い光像を右へドラッグしてみよう ✦':saved.seedCount>0?'光る輪をタップして、たねを植えよう ✦':'赤い子をタップしてみよう ✦';refreshCards();}
+function refreshCards(){if(scene==='tune'){$('footTitle').textContent='赤と青の、光の分身を動かそう。';$('footText').textContent='赤を動かすと、紫の光も連動する。';refreshMath();return;}
+ const n=progress(),hasSeed=saved.seedCount>0;
+ $('seedStatus').textContent='✦ たね '+saved.seedCount+'個';$('growthLine').style.width=clamp(14+n*28,14,100)+'%';$('seedInfo').classList.toggle('hidden',!hasSeed);
+ $('gardenTitle').textContent=hasSeed?'光のたねを、庭へ。':saved.taskDone?'今日も、光がきらめいている。':'赤い子が、実を見つけた。';
+ $('gardenDesc').innerHTML=hasSeed?'<b>「ここに植えたら、どんな花になるかな？」</b><br>庭の光る輪が、たねを植えられる場所。好きな場所をタップしてね。':saved.taskDone?'<b>「ありがとう！ また一緒に遊ぼうね」</b><br>赤い子は元気いっぱい。新しい光を試すことも、庭を眺めることもできる。':'<b>「あの光の実、おいしそう！」</b><br>届かない実があるみたい。空間を少し伸ばして、手伝ってみよう。';
+ $('gardenGrowth').textContent=n?`${n}か所にたねを植えたよ。光る植物は24時間ほどで花を咲かせ、枯れずに残る。`:'ここでの小さな出来事は、次に訪れたときも残ります。';
+ $('taskLabel').textContent=hasSeed?'庭しごと':saved.taskDone?'お手伝い完了':'お手伝い · 01';
+ $('sideStart').textContent=hasSeed?'植え場所を選ぼう':saved.taskDone?'もう一度、光を試す':'お手伝いをはじめる';
+ $('startTask').textContent=hasSeed?'たねを植える ✦':saved.taskDone?'調律をもう一度 →':'赤い子を手伝う →';
+ $('previewGrowth').textContent=preview?'プレビューを戻す':'翌日の姿を見る';$('previewGrowth').classList.toggle('hidden',n===0);
+ $('footTitle').textContent=hasSeed?'光のたねが、待っている。':saved.taskDone?'庭に、光がひとつ増えた。':'今日は、どんな一日かな。';
+ $('footText').textContent=hasSeed?'光る輪をタップすると植えられるよ。':saved.taskDone?'生き物たちは、今日も自分たちの時間を楽しんでいる。':'赤と青が、のんびり暮らしている。';
+ if(!saveOkay){$('gardenGrowth').textContent+=' ※このブラウザでは保存できていない可能性があります。';}
+}
+function resetTune(){A=[1,0,0,1];history=[];win=false;rememberA();refreshMath()}
+function rememberA(){saved.tuneA=A.slice();save()}
+function enterTune(replay=false){free=false;win=false;pointers.clear();active=null;A=replay?[1,0,0,1]:saved.tuneA.slice();history=[];setCanvasScene('tune');setFree(false);sound(1);}
+function setFree(v){free=v;$('modeName').textContent=v?'自由実験':'お手伝い';$('tuneTitle').textContent=v?'世界の形を、自由に試す。':'赤い子に、光の実を。';$('tuneHelp').textContent=v?'赤・青をドラッグ。2本指で回転やピンチも試せるよ。紫は2匹の位置の和を保つ。':'赤い光の分身を、右側の実へ引っ張ろう。紫の光は、赤と青の動きに連動するよ。';$('goalList').classList.toggle('hidden',v);$('toggleFree').textContent=v?'お手伝いに戻る':'自由にためす';$('rotateLeft').classList.toggle('hidden',!v);$('scaleMore').classList.toggle('hidden',!v);$('hint').textContent=v?'赤・青のドラッグ ／ 2本指で回転・ピンチ':'赤い光像を右へドラッグしてみよう ✦';refreshMath()}
+function backToGarden(){pointers.clear();active=null;free=false;setCanvasScene('garden');window.scrollTo({top:0,behavior:'instant'});}
+function dropSeed(i){if(!saved.seedCount){toast('まず光のたねを手に入れよう');return}if(saved.plots[i]){toast('ここにはもう花が育っているよ');return}saved.plots[i]={at:Date.now()};saved.seedCount--;save();needPlant=false;sound(3);toast('光のたねを植えたよ！ 🌱');$('hint').textContent='この場所に、どんな花が咲くかな？';refreshCards();}
+function success(){if(win||free)return;win=true;history=[];saved.taskDone=true;const canReward=progress()+saved.seedCount<3;if(canReward)saved.seedCount++;save();$('resultTitle').textContent=canReward?'光が、とどいた！':'庭いっぱいに、光が灯った！';$('resultDescription').innerHTML=canReward?'赤い子がうれしそうに実を食べた。<br>紫の光が花を灯し、小さな光のたねが生まれた。':'赤い子は今日もごきげん。<br>庭にはもう3つの光の花が育っている。';$('resultSeed').textContent=canReward?'光のたね × 1':'光の花 × 3';$('backAfterWin').textContent=canReward?'庭にもどって、たねを植える →':'庭にもどる →';$('results').classList.add('show');sound(3);}
+function refreshMath(){if(scene!=='tune')return;for(const [id,i] of [['m11',0],['m12',1],['m21',2],['m22',3]])$(id).textContent=fmt(A[i]);$('det').textContent=fmt(Math.abs(A[0]*A[3]-A[1]*A[2]));}
+function check(){refreshMath();if(!free&&Math.hypot(A[0]-2,A[2])<.15&&Math.hypot(A[1],A[3]-1)<.15)success()}
+function position(e){const r=can.getBoundingClientRect();return {x:(e.clientX-r.left)*can.width/r.width,y:(e.clientY-r.top)*can.height/r.height}}
+function saveUndo(){history.push(A.slice());if(history.length>15)history.shift()}
+function onDown(e){if(scene!=='tune')return;e.preventDefault();const p=position(e);pointers.set(e.pointerId,p);try{can.setPointerCapture(e.pointerId)}catch(err){}
+ if(pointers.size===2&&free){const ps=[...pointers.values()],dx=ps[1].x-ps[0].x,dy=ps[1].y-ps[0].y;saveUndo();active={kind:'pinch',baseA:A.slice(),distance:Math.hypot(dx,dy),angle:Math.atan2(dy,dx)};return}
+ if(pointers.size!==1)return;
+ const r=mathToScreen(A[0],A[2]),b=mathToScreen(A[1],A[3]);const dr=Math.hypot(p.x-r[0],p.y-r[1]),db=Math.hypot(p.x-b[0],p.y-b[1]);
+ if(dr<75){saveUndo();active={kind:'drag',index:0};}
+ else if(free&&db<75){saveUndo();active={kind:'drag',index:1};}
+ else active={kind:'none'};
+ if(active.kind==='drag')can.classList.add('dragging');
+}
+function onMove(e){if(scene!=='tune'||!pointers.has(e.pointerId))return;e.preventDefault();const p=position(e);pointers.set(e.pointerId,p);if(!active)return;
+ if(active.kind==='drag'&&pointers.size===1){const w=screenToMath(p.x,p.y);const ci=active.index;A[ci]=clamp(w[0],-2.6,3.9);A[ci+2]=clamp(w[1],-2.5,3.1);if(!free&&ci===0){if(Math.hypot(A[0]-2,A[2])<.12){A[0]=2;A[2]=0;}}check();}
+ if(active.kind==='pinch'&&pointers.size===2){const ps=[...pointers.values()],dx=ps[1].x-ps[0].x,dy=ps[1].y-ps[0].y;const z=clamp(Math.hypot(dx,dy)/Math.max(1,active.distance),.43,2.15);const angle=Math.atan2(dy,dx)-active.angle;const c=Math.cos(angle)*z,s=Math.sin(angle)*z;A=mm([c,-s,s,c],active.baseA).map(n=>clamp(n,-4,4));refreshMath();}
+}
+function onUp(e){if(scene!=='tune')return;if(!pointers.has(e.pointerId))return;pointers.delete(e.pointerId);can.classList.remove('dragging');if(pointers.size===1&&active?.kind==='pinch'){const p=[...pointers.values()][0],r=mathToScreen(A[0],A[2]),b=mathToScreen(A[1],A[3]);const dr=Math.hypot(p.x-r[0],p.y-r[1]),db=Math.hypot(p.x-b[0],p.y-b[1]);active=dr<75?{kind:'drag',index:0}:free&&db<75?{kind:'drag',index:1}:{kind:'none'};}else if(pointers.size===0){active=null;rememberA();check();}}
+function clickedGarden(e){if(scene!=='garden')return;const p=position(e);
+ if(saved.seedCount>0){const ind=plotSpots.findIndex(s=>Math.hypot(s.x-p.x,s.y-p.y)<70);if(ind!==-1){dropSeed(ind);return;}}
+ for(const f of folk){const y=f.y+Math.sin(frame*.038+f.phase)*7;if(Math.hypot(f.x-p.x,y-p.y)<88){f.lookUntil=performance.now()+2300;f.hopUntil=performance.now()+1100;saved.interactions++;save();sound(1);toast(f.id==='red'?'赤い子が、うれしそうに跳ねた ✦':'青い子が、こちらを見ている ✦');$('hint').textContent=f.id==='red'&&!saved.taskDone?'赤い子を手伝ってあげよう ✦':'ぷるん、と小さく跳ねた ✦';return;}}
+ const plotInd=plotSpots.findIndex(s=>Math.hypot(s.x-p.x,s.y-p.y)<60);if(plotInd!==-1){toast(saved.plots[plotInd]?'ここには光の植物があるよ':'ここには、光のたねを植えられるよ');return;}
+}
+function resizeView(){/* SVGに頼らず、canvasの論理座標をCSSで等比拡大 */}
+function backdrop(w,h,t,light=.7){const g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,'#142b41');g.addColorStop(.52,'#102a39');g.addColorStop(1,'#0a1829');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);for(let i=0;i<60;i++){const x=((Math.sin(i*193.7)*47285)%1+1)%1*w,y=(((Math.cos(i*71.12)*35431)%1+1)%1)*h*.68;const pulse=.3+Math.sin(t*.0006+i)*.16;ctx.beginPath();ctx.arc(x,y,1.15+(i%6===0?1.1:0),0,Math.PI*2);ctx.fillStyle=`rgba(211,235,255,${pulse})`;ctx.fill();}const glow=ctx.createRadialGradient(w*.64,h*.31,0,w*.64,h*.31,w*.56);glow.addColorStop(0,`rgba(106,164,161,${.1*light})`);glow.addColorStop(1,'rgba(11,20,35,0)');ctx.fillStyle=glow;ctx.fillRect(0,0,w,h)}
+function ellipse(x,y,rx,ry,color){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fillStyle=color;ctx.fill()}
+function glow(x,y,r,color,opacity=1){const g=ctx.createRadialGradient(x,y,1,x,y,r);g.addColorStop(0,color);g.addColorStop(1,'transparent');ctx.save();ctx.globalAlpha=opacity;ctx.fillStyle=g;ctx.fillRect(x-r,y-r,r*2,r*2);ctx.restore()}
+function strokePath(pts,color,width=2){ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke()}
+function softBlob(x,y,r,color,t,mode='normal',id=''){const wobble=Math.sin(t*.0025+(id==='red'?1:2))*2;ctx.save();glow(x,y,r*2.5,color,.13);ellipse(x,y+r*.81,r*.7,r*.21,'#00000025');ctx.beginPath();ctx.moveTo(x-r*.88,y+r*.2);ctx.bezierCurveTo(x-r*1.0,y-r*.25,x-r*.6,y-r*1.02,x,y-r*(1.08+wobble/r));ctx.bezierCurveTo(x+r*.8,y-r*.99,x+r*1.02,y-r*.28,x+r*.9,y+r*.27);ctx.bezierCurveTo(x+r*.8,y+r*.91,x-r*.82,y+r*.92,x-r*.88,y+r*.2);ctx.closePath();const grad=ctx.createLinearGradient(x-r,y-r,x+r,y+r);grad.addColorStop(0,'#fff6');grad.addColorStop(.19,color);grad.addColorStop(.67,color);grad.addColorStop(1,'#778baf');ctx.fillStyle=grad;ctx.fill();ctx.lineWidth=1.8;ctx.strokeStyle='#ffffff35';ctx.stroke();ellipse(x-r*.32,y-r*.54,r*.19,r*.12,'#ffffff70');const eyeY=y-r*.01,eyeX=r*.22;ellipse(x-eyeX,eyeY,r*.065,r*.095,'#172f47');ellipse(x+eyeX,eyeY,r*.065,r*.095,'#172f47');ellipse(x-eyeX-r*.013,eyeY-r*.03,r*.018,r*.022,'#efffff');if(mode==='happy'){ctx.beginPath();ctx.arc(x,y+r*.2,r*.11,.1,Math.PI-.1);ctx.lineWidth=2.2;ctx.strokeStyle='#34475e';ctx.stroke()}else{ellipse(x,y+r*.22,r*.038,r*.028,'#293b4f')}ctx.restore()}
+function drawGarden(t){backdrop(GW,GH,t);
+ // Distant hills and silver mist
+ ctx.fillStyle='#152f3c';ctx.beginPath();ctx.moveTo(0,420);ctx.bezierCurveTo(190,350,270,436,423,397);ctx.bezierCurveTo(565,350,670,380,900,315);ctx.lineTo(900,950);ctx.lineTo(0,950);ctx.fill();
+ ctx.fillStyle='#1a3f49';ctx.beginPath();ctx.moveTo(0,520);ctx.bezierCurveTo(220,454,330,491,520,440);ctx.bezierCurveTo(670,410,790,455,900,400);ctx.lineTo(900,950);ctx.lineTo(0,950);ctx.fill();
+ glow(630,420,270,'#62ad9270',.5); // hill foliage
+ // Miniature village ground island
+ ctx.beginPath();ctx.ellipse(455,755,560,267,-.04,0,Math.PI*2);ctx.fillStyle='#264e49';ctx.fill();
+ ctx.beginPath();ctx.ellipse(455,746,545,254,-.04,0,Math.PI*2);let land=ctx.createLinearGradient(200,550,700,960);land.addColorStop(0,'#356354');land.addColorStop(.65,'#244d4b');land.addColorStop(1,'#193d45');ctx.fillStyle=land;ctx.fill();ctx.strokeStyle='#8cc2a42c';ctx.lineWidth=3;ctx.stroke();
+ // Pond
+ ctx.save();ctx.rotate(-.08);ellipse(776,720,117,53,'#0e3f58');ellipse(776,710,109,39,'#2e758277');ellipse(780,715,78,18,'#78bcbd22');ctx.restore();
+ // House left
+ glow(240,490,158,'#d2b78a40',.65);ctx.fillStyle='#8c8176';ctx.beginPath();ctx.moveTo(117,517);ctx.lineTo(242,413);ctx.lineTo(370,515);ctx.closePath();ctx.fill();ctx.fillStyle='#c4a78b';ctx.fillRect(144,506,194,163);ctx.fillStyle='#7c776e';ctx.beginPath();ctx.moveTo(111,518);ctx.lineTo(242,414);ctx.lineTo(375,518);ctx.lineTo(351,519);ctx.lineTo(242,442);ctx.lineTo(132,519);ctx.fill();ctx.fillStyle='#35566a';ctx.fillRect(185,566,50,103);ctx.fillStyle='#f8d99a';ctx.fillRect(265,547,39,36);glow(285,562,76,'#f5d69b75',.42);ctx.fillStyle='#283f4a';ctx.fillRect(271,553,29,28);ctx.fillStyle='#fae3b2';ctx.fillRect(274,555,23,21);ctx.strokeStyle='#b98770';ctx.lineWidth=4;ctx.strokeRect(271,553,29,28);
+ // Luminous tree
+ ctx.strokeStyle='#a7b8a1';ctx.lineCap='round';ctx.lineWidth=18;ctx.beginPath();ctx.moveTo(680,578);ctx.bezierCurveTo(690,498,690,412,696,341);ctx.stroke();ctx.lineWidth=8;ctx.beginPath();ctx.moveTo(690,470);ctx.lineTo(636,429);ctx.moveTo(691,422);ctx.lineTo(752,384);ctx.stroke();
+ for(let i=0;i<11;i++){const a=i*Math.PI*2/11;const x=691+Math.sin(a*1.7)*94+Math.sin(i*15)*22,y=326+Math.cos(a)*62;glow(x,y,80,'#8ed5ad3d',.6);ellipse(x,y,44+10*Math.sin(i*2.3),34+8*Math.cos(i*1.6),i%3===0?'#427965c9':'#4e9479b8');}
+ for(let i=0;i<19;i++){const a=i*2.4,x=686+Math.cos(a)*clamp(38+(i*13)%112,35,126),y=342+Math.sin(a)*clamp(16+(i*8)%70,10,88);glow(x,y,20,i%2?'#b6f2c4a5':'#ffe0a4c0',.34);ellipse(x,y,3+(i%3),3+(i%3),i%2?'#b6f2c4':'#ffe0a4')}
+ // Tiny lanterns
+ for(const [x,y] of [[95,748],[813,565],[522,521]]){glow(x,y,42,'#fce9b47c',.52);strokePath([[x,y],[x,y+35]],'#b4bba8',3);ellipse(x,y,8,10,'#f6dbaa')}
+ // Floor path
+ ctx.beginPath();ctx.moveTo(217,670);ctx.bezierCurveTo(225,716,316,727,385,768);ctx.bezierCurveTo(460,813,533,829,638,802);ctx.lineWidth=53;ctx.strokeStyle='#d3c29a20';ctx.stroke();
+ // Existing plant decorations
+ for(const [x,y,k] of [[84,633,0],[144,797,1],[786,828,2],[602,634,3]]){strokePath([[x,y+12],[x-2,y-8]],'#8dbf9e',4);glow(x,y-12,24,'#e5d39980',.36);ellipse(x-5,y-12,9,6,k%2?'#cfadd2':'#b7d8a6');ellipse(x+5,y-14,7,8,'#e3d6ac')}
+ // plots and growing flowers
+ plotSpots.forEach((p,i)=>{const item=saved.plots[i];const active=(!item&&saved.seedCount>0);if(!item){ctx.save();ctx.setLineDash(active?[7,8]:[4,11]);ctx.lineWidth=active?4:2;ctx.strokeStyle=active?'#fadba7':'#a5d5c358';ctx.beginPath();ctx.ellipse(p.x,p.y,51,22,-.06,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);if(active){glow(p.x,p.y,65,'#ffe0a988',.4);ctx.fillStyle='#ffe5b4';ctx.font='23px sans-serif';ctx.textAlign='center';ctx.fillText('＋',p.x,p.y+8)}ctx.restore();return}
+ const age=(Date.now()-item.at)/(60*60*1000),phase=preview?2:age>=24?2:age>=.008?1:0;
+ glow(p.x,p.y-35,85,'#92f3baa0',.24);strokePath([[p.x,p.y+4],[p.x-3,p.y-(phase===2?95:phase===1?51:15)]],'#91c9a8',7);if(phase===0){ellipse(p.x,p.y-8,16,9,'#9fdfb0');}else{ellipse(p.x-15,p.y-33,22,10,'#8fc99b');ellipse(p.x+17,p.y-45,19,9,'#a9d6a9');}if(phase===2){const yy=p.y-105;for(let k=0;k<6;k++){const a=k*Math.PI/3;ellipse(p.x+Math.sin(a)*18,yy+Math.cos(a)*16,18,12,['#c8b1e7','#b6d9d0','#f8d7a2'][i]);}glow(p.x,yy,55,'#f6e0a0d0',.62);ellipse(p.x,yy,10,10,'#fff1b6')}else{glow(p.x,p.y-(phase===1?55:21),25,'#a5dfbb80',.36)}
+ });
+ // Folk wander and play
+ folk.forEach((f,i)=>{if(t>f.moveAt){f.moveAt=t+2400+((i+2)*2300+(t%1800));f.targetX=f.baseX+Math.sin(t*.00042*(i+2)+i*2)*80;}f.x+=(f.targetX-f.x)*.009;const happy=t<f.hopUntil,y=f.y+Math.sin(t*.002+f.phase)*5-(happy?Math.abs(Math.sin(t*.016))*34:0);softBlob(f.x,y,i===0?48:43,i===0?C.coral:C.blue,t,happy?'happy':'normal',f.id);if(t<f.lookUntil){ctx.font='22px sans-serif';ctx.textAlign='center';ctx.fillStyle='#f7eabf';ctx.fillText('♥',f.x,y-73)}});
+ // Task bubble and seed count
+ if(!saved.taskDone){glow(328,539,64,'#fce2ab7c',.43);ctx.beginPath();ctx.roundRect(230,493,212,60,26);ctx.fillStyle='#f6e2ba';ctx.fill();ctx.beginPath();ctx.moveTo(315,551);ctx.lineTo(322,570);ctx.lineTo(341,548);ctx.fill();ctx.fillStyle='#534b43';ctx.font='25px sans-serif';ctx.textAlign='center';ctx.fillText('あの実、ほしいな…',336,533);}
+ if(preview){ctx.fillStyle='#e3f2e8';ctx.font='20px sans-serif';ctx.textAlign='center';ctx.fillText('✦ 翌日の庭をプレビュー中',450,90)}
+}
+const ORIGIN=[300,584],UNIT=139;
+const mathToScreen=(x,y)=>[ORIGIN[0]+UNIT*x,ORIGIN[1]-UNIT*y];
+const screenToMath=(x,y)=>[(x-ORIGIN[0])/UNIT,(ORIGIN[1]-y)/UNIT];
+function strokeWorld(p,q,color,width=2,opacity=1){const a=mathToScreen(p[0],p[1]),b=mathToScreen(q[0],q[1]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.lineWidth=width;ctx.strokeStyle=color;ctx.globalAlpha=opacity;ctx.stroke();ctx.globalAlpha=1}
+function orbTarget(x,y,color,r=31){const p=mathToScreen(x,y);glow(p[0],p[1],r*2.6,color,.13);ctx.save();ctx.setLineDash([7,9]);ctx.strokeStyle=color;ctx.lineWidth=3;ctx.beginPath();ctx.arc(p[0],p[1],r,0,2*Math.PI);ctx.stroke();ctx.restore();}
+function drawTune(t){backdrop(PW,PH,t); // faint landscape integration
+ const far=ctx.createLinearGradient(0,500,0,PH);far.addColorStop(0,'#1b3d4144');far.addColorStop(1,'#24474470');ctx.fillStyle=far;ctx.fillRect(0,500,PW,PH-500);
+ ctx.save();ctx.beginPath();ctx.rect(0,0,PW,PH);ctx.clip();
+ for(let i=-6;i<=6;i++){strokeWorld([i,-6],[i,6],'#8aa3b7',1.2,.12);strokeWorld([-6,i],[6,i],'#8aa3b7',1.2,.12)}
+ for(let i=-6;i<=6;i++){const a=vapply(A,i,-6),b=vapply(A,i,6),c=vapply(A,-6,i),d=vapply(A,6,i);strokeWorld(a,b,'#93c3d3',2,.27);strokeWorld(c,d,'#93c3d3',2,.27)}
+ strokeWorld([-6,0],[6,0],'#cdd8e5',2,.40);strokeWorld([0,-6],[0,6],'#cdd8e5',2,.40);
+ if(!free){orbTarget(2,0,C.coral,34);orbTarget(2,1,C.violet,32);const r=mathToScreen(2,0),q=mathToScreen(2,1);glow(r[0],r[1],45,'#f7d4a2c0',.25);ctx.fillStyle='#f9d49d';ctx.beginPath();ctx.moveTo(r[0],r[1]-13);ctx.bezierCurveTo(r[0]-25,r[1]-35,r[0]-25,r[1]-4,r[0],r[1]+14);ctx.bezierCurveTo(r[0]+25,r[1]-2,r[0]+20,r[1]-32,r[0],r[1]-13);ctx.fill();ctx.fillStyle='#fbd89a';ctx.font='19px sans-serif';ctx.fillText('✦',q[0]-7,q[1]+7);}
+ const red=vapply(A,1,0),blue=vapply(A,0,1),purple=vapply(A,1,1);let pR=mathToScreen(...red),pB=mathToScreen(...blue),pP=mathToScreen(...purple),pO=mathToScreen(0,0);
+ ctx.beginPath();ctx.moveTo(...pO);ctx.lineTo(...pR);ctx.lineTo(...pP);ctx.lineTo(...pB);ctx.closePath();ctx.fillStyle='#d9b9ff0e';ctx.fill();ctx.strokeStyle='#b9b1fa88';ctx.lineWidth=2;ctx.setLineDash([7,10]);ctx.stroke();ctx.setLineDash([]);
+ strokeWorld([0,0],red,C.coral,5,.87);strokeWorld([0,0],blue,C.blue,5,.87);strokeWorld([0,0],purple,C.violet,3,.55);
+ ellipse(pO[0],pO[1],5,5,'#f2f7ff');
+ softBlob(pP[0],pP[1],30,C.violet,t,'normal','purple');softBlob(pB[0],pB[1],35,C.blue,t,'normal','blue');softBlob(pR[0],pR[1],39,C.coral,t,'normal','red');
+ if(!win){const target=mathToScreen(2,0),q=mathToScreen(2,1);ctx.fillStyle='#f6d39d';ctx.font='21px sans-serif';ctx.textAlign='center';if(!free){ctx.fillText('実',target[0],target[1]+65);ctx.fillText('花',q[0],q[1]-54);}}ctx.restore();
+ // little labels
+ ctx.textAlign='left';ctx.font='18px sans-serif';ctx.fillStyle='#a7c3d9';ctx.fillText(free?'自由に変形する':'ひとつを動かすと、みんなが動く。',27,89);
+}
+function tick(t){lastTime=t;frame++;if(scene==='garden')drawGarden(t);else drawTune(t);requestAnimationFrame(tick)}
+function eventClick(e){if(scene==='garden')clickedGarden(e)}
+can.addEventListener('click',eventClick);
+can.addEventListener('pointerdown',onDown,{passive:false});can.addEventListener('pointermove',onMove,{passive:false});can.addEventListener('pointerup',onUp);can.addEventListener('pointercancel',onUp);can.addEventListener('lostpointercapture',e=>{if(scene==='tune'&&pointers.has(e.pointerId))onUp(e)});
+$('startTask').addEventListener('click',()=>{if(saved.seedCount>0){toast('庭の光る輪をタップしてみてね');$('hint').textContent='好きな輪をタップして植えよう ✦';return}enterTune(saved.taskDone)});
+$('sideStart').addEventListener('click',()=>{if(saved.seedCount>0){toast('庭の光る輪をタップしてみてね');return}enterTune(saved.taskDone)});
+$('leaveTune').addEventListener('click',()=>{rememberA();backToGarden()});
+$('backAfterWin').addEventListener('click',()=>{backToGarden();toast(saved.seedCount>0?'好きな場所に、光のたねを植えよう！':'光の花が、きれいに育っているね ✦')});
+$('toggleFree').addEventListener('click',()=>{setFree(!free);resetTune()});
+$('rotateLeft').addEventListener('click',()=>{saveUndo();const a=-Math.PI/12;A=mm([Math.cos(a),-Math.sin(a),Math.sin(a),Math.cos(a)],A);rememberA();check()});
+$('scaleMore').addEventListener('click',()=>{saveUndo();A=mm([1.12,0,0,1.12],A).map(v=>clamp(v,-4,4));rememberA();check()});
+$('resetTune').addEventListener('click',()=>{resetTune();toast('最初の形にもどしたよ')});
+$('undoTune').addEventListener('click',()=>{if(history.length){A=history.pop();rememberA();check();toast('ひとつ前にもどしたよ')}else toast('まだ戻せる操作はないよ')});
+$('previewGrowth').addEventListener('click',()=>{preview=!preview;$('hint').textContent=preview?'翌日の姿をプレビューしています':'庭に戻りました';refreshCards()});
+$('restart').addEventListener('click',()=>{if(!confirm('庭の花・お手伝いの進行をすべて消して、最初から始めますか？'))return;saved=baseline();save();preview=false;free=false;A=[1,0,0,1];folk.forEach(f=>{f.x=f.baseX;f.targetX=f.baseX});setCanvasScene('garden');toast('はじめての庭に戻ったよ')});
+$('sound').addEventListener('click',()=>{audioOn=!audioOn;$('sound').textContent=audioOn?'♫':'♪';$('sound').setAttribute('aria-label',audioOn?'音を消す':'音を出す');sound(2)});
+setCanvasScene('garden');requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
