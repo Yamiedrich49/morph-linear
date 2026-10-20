@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#091422"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="ひかりのすみか：紫ちゃんたちと暮らし、基底ベクトルを使ってお手伝いする、数学と生活の試作品。">
+<title>ひかりのすみか | MORPH / LINEAR — Living v0.2</title>
+<style>
+:root{color-scheme:dark;--bg:#081320;--panel:#132638;--border:#30475d;--ink:#ecf4f7;--sub:#afc4d2;--muted:#829cb2;--pink:#e8b9ff;--red:#ffa29c;--blue:#91d8ff;--gold:#f8d596;--green:#a7e6c8;--mint:#b5eddb}
+*{box-sizing:border-box}html{background:var(--bg);font-size:14px}body{margin:0;min-height:100dvh;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:radial-gradient(ellipse 80% 45% at 10% 0%,#24405452,transparent),radial-gradient(ellipse 60% 50% at 95% 60%,#2f2e5650,transparent),#081320;-webkit-font-smoothing:antialiased}button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:2px solid #c5efff;outline-offset:2px}button:disabled{opacity:.42;cursor:not-allowed}.app{max-width:575px;margin:0 auto;padding:12px 12px calc(17px + env(safe-area-inset-bottom))}.mast{height:51px;display:flex;justify-content:space-between;align-items:center;gap:10px}.logo{display:flex;gap:10px;align-items:center}.logo-dot{width:32px;height:32px;border-radius:48% 52% 44% 56%;background:radial-gradient(circle at 30% 22%,#fff9,#dfbbff 38%,#865cbf 100%);box-shadow:0 0 20px #c9a4fd70,inset -5px -7px 10px #7c5faa44;position:relative;transform:rotate(-9deg)}.logo-dot:after{content:'••';position:absolute;left:10px;top:9px;letter-spacing:5px;font-size:9px;color:#1a2941}.brand{font-size:16px;font-weight:690;letter-spacing:.11em}.brand small{font-size:9px;color:#82a1b6;display:block;letter-spacing:.17em;margin-top:1px;font-weight:500}.top-right{display:flex;align-items:center;gap:7px}.version{font-size:10px;letter-spacing:.08em;color:#b0c5d5;padding:6px 8px;border-radius:20px;border:1px solid #365063}.mini-icon{display:grid;place-items:center;width:32px;height:32px;border:1px solid #3a5366;border-radius:50%;background:#182b3d;font-size:17px}.heading{display:flex;align-items:start;justify-content:space-between;gap:10px;padding:8px 2px 10px}.kicker{color:#85bac8;font-size:9px;letter-spacing:.23em;font-weight:700}.heading h1{font-size:20px;font-weight:700;letter-spacing:.04em;margin:3px 0 0}.scene-tag{font-size:10px;border-radius:99px;border:1px solid #486275;padding:7px 11px;color:#c9e8e3;background:#19404757;white-space:nowrap;margin-top:5px}.stage-shell{position:relative;border:1px solid #38556b;overflow:hidden;border-radius:23px;background:#0c2030;box-shadow:0 14px 40px #0109108c,0 0 75px #40678016}.stage{display:block;width:100%;height:clamp(360px, calc(100dvh - 297px), 615px);touch-action:pan-y;user-select:none;-webkit-user-select:none}.stage.in-tune{touch-action:none;cursor:grab}.stage.dragging{cursor:grabbing}.scene-overlay-top{position:absolute;left:13px;top:12px;right:13px;display:flex;justify-content:space-between;align-items:start;gap:8px;pointer-events:none}.scene-pill{padding:7px 10px;border:1px solid #5870858a;border-radius:30px;background:#0c1d30c9;backdrop-filter:blur(10px);font-size:10px;color:#d2e4f0}.scene-pill b{color:#e1ebfa}.notice{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 30px);text-align:center;color:#e2e9f0;background:#0c1f30db;backdrop-filter:blur(8px);border:1px solid #55718481;padding:9px 13px;border-radius:50px;font-size:11px;line-height:1.4;pointer-events:none;white-space:normal}.stage-mode-label{font-size:10px;color:#adccda}.below{border:1px solid #375269;background:#122538;border-radius:19px;padding:14px 15px;margin-top:10px;box-shadow:inset 0 1px #ffffff06}.desc-head{display:flex;justify-content:space-between;align-items:center;gap:9px}.desc-head strong{font-size:13px;letter-spacing:.02em}.desc-head .small{font-size:10px;color:#98b2c3}.desc{font-size:12px;line-height:1.75;color:#bed2df;margin:6px 0 10px;min-height:21px}.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.btn{border:1px solid #476278;border-radius:12px;min-height:42px;padding:10px 13px;background:#203b51;font-size:12px;font-weight:650;line-height:1.4;transition:filter .14s,transform .14s}.btn:active{transform:scale(.99);filter:brightness(1.18)}.btn.main{border:1px solid #a9dfcd;background:linear-gradient(135deg,#d3f4e7,#9fd8cb);color:#193b44;box-shadow:0 8px 25px #85d4b31e}.btn.main.gold{background:linear-gradient(130deg,#fce5b7,#eac88d);border-color:#ffe8c4;color:#503d35}.btn.ghost{background:#152b3d;color:#c5d8e5;border-color:#3c576b}.btn.wide{flex:1;min-width:150px}.btn.slim{font-size:11px;min-height:36px;padding:7px 10px}.btn.faint{background:transparent}.line{height:1px;background:#324d62;margin:12px 0}.under{margin-top:10px;border:1px solid #2f455a;border-radius:17px;padding:12px 14px;background:#0f2233db}.under h3{margin:0 0 8px;font-size:12px;font-weight:700}.task-tiles{display:flex;gap:6px;overflow-x:auto;padding:3px 1px 6px;scrollbar-width:none}.task-tiles::-webkit-scrollbar{display:none}.chip{border:1px solid #34536d;padding:8px 10px;background:#182d42;border-radius:11px;flex:0 0 auto;white-space:nowrap;color:#c7dce6;font-size:11px}.chip.active{border-color:#b0e6db;background:#285047;color:#f0fff8}.chip.locked{opacity:.43}.tiny{font-size:10px;color:#91acbd;line-height:1.6}.matdetail{display:none;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:11px 13px;margin-top:9px;border:1px solid #344d66;background:#102337;border-radius:14px}.matdetail.visible{display:flex}.mat{border-left:2px solid #83a9c2;border-right:2px solid #83a9c2;display:grid;grid-template-columns:60px 60px;grid-template-rows:23px 23px;place-items:center;padding:1px 5px;font:17px Georgia,serif}.mat .red{color:#fda7a4}.mat .blue{color:#9cdeff}.math-caption{max-width:190px;flex:1;color:#9ebacf;font-size:10px;line-height:1.7}.progress-dots{display:flex;gap:5px;align-items:center}.progress-dots i{width:6px;height:6px;background:#3d5568;border-radius:50%}.progress-dots i.done{background:#b1e5ce;box-shadow:0 0 9px #9debd06e}.goalstatus{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:9px}.goal{font-size:10px;border:1px solid #425b70;padding:5px 9px;border-radius:99px;color:#aebecd;background:#0e2436}.goal.ok{color:#d9fbe8;border-color:#5c9d81;background:#23483b}.overlay{position:absolute;inset:0;z-index:10;background:radial-gradient(ellipse at 50% 37%,#20404acc,#081826f0 77%);display:none;place-items:center;padding:22px;backdrop-filter:blur(3px)}.overlay.show{display:grid}.overlay-card{width:min(100%,340px);border:1px solid #7dbeaa9c;border-radius:23px;padding:27px 20px;background:#173544ed;text-align:center;box-shadow:0 20px 60px #0007}.victory{font-size:38px;color:#ffe6a4;filter:drop-shadow(0 0 13px #ffdaa27e);line-height:1.3}.overlay h2{font-size:22px;margin:9px 0 7px}.overlay p{font-size:12px;line-height:1.85;color:#c9e0db;margin:6px 0 17px}.overlay .btn{width:100%}.overlay-note{margin-top:10px;font-size:10px;color:#a4c9be}.muted{color:#9db6c5}.foot{text-align:center;font-size:10px;color:#7793a6;line-height:1.75;margin-top:11px}.foot button{border:0;background:none;text-decoration:underline;color:#a1c2d1;font-size:10px;padding:3px}.tip-pop{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,12px);background:#193b44ee;color:#e4fff6;border:1px solid #81b7a5;border-radius:30px;padding:10px 17px;font-size:11px;box-shadow:0 15px 40px #0008;opacity:0;pointer-events:none;transition:opacity .22s, transform .22s;max-width:94vw;text-align:center;z-index:99}.tip-pop.on{opacity:1;transform:translate(-50%,0)}.mode-tabs{display:flex;gap:7px;align-items:center}.mode-tabs .btn{min-height:34px}.hide{display:none!important}@media (max-width:380px){.app{padding:9px 9px calc(12px + env(safe-area-inset-bottom))}.stage{height:clamp(340px, calc(100dvh - 298px), 580px)}.heading h1{font-size:18px}.btn{padding:9px 10px}.below{padding:12px}.brand{font-size:15px}}
+@media(min-width:800px){.app{padding-top:18px}.stage{height:570px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="mast"><div class="logo"><div class="logo-dot" aria-hidden="true"></div><div class="brand">ひかりのすみか<small>MORPH / LINEAR</small></div></div><div class="top-right"><span class="version">PLAYTEST · v0.2</span><button id="sound" class="mini-icon" aria-label="音をオンにする" title="音">♪</button></div></header>
+<div class="heading"><div><div class="kicker" id="eyebrow">SMALL WORLD · 01</div><h1 id="title">きょうの小さな庭</h1></div><div class="scene-tag" id="statusTag">庭でひとやすみ</div></div>
+<section class="stage-shell" aria-label="ゲーム画面"><canvas id="stage" class="stage" aria-label="紫ちゃんの庭と、指で基底を動かす調律空間"></canvas><div class="scene-overlay-top"><span id="topLeft" class="scene-pill">✦ やわらかな光の朝</span><span id="topRight" class="scene-pill">花 <b>0</b> / 3</span></div><div id="stageNotice" class="notice">紫ちゃんをタップしてみよう ✦</div>
+ <div id="result" class="overlay" role="dialog" aria-modal="true" aria-labelledby="resultTitle"><div class="overlay-card"><div class="victory">✦ ✧ ✦</div><h2 id="resultTitle">光がとどいた！</h2><p id="resultText"></p><button class="btn main" id="resultBack">庭に帰ろう →</button><div class="overlay-note" id="resultExtra"></div></div></div>
+</section>
+<section class="below"><div class="desc-head"><strong id="subTitle">庭でのんびり過ごそう</strong><span class="small" id="subInfo">お手伝い 0 / 3</span></div><p class="desc" id="description">紫ちゃんたちは、今日も気ままに暮らしている。困りごとがあれば、調律して手伝おう。</p><div id="goalStatus" class="goalstatus hide"></div><div class="bar" id="actions"></div><div id="matrixDetail" class="matdetail"><div class="mat" aria-label="現在の2行2列行列"><span id="a11" class="red">1.00</span><span id="a12" class="blue">0.00</span><span id="a21" class="red">0.00</span><span id="a22" class="blue">1.00</span></div><span class="math-caption" id="mathHint">赤と青のベクトルが、行列Aの2列になっている。</span><span class="tiny" id="detLabel">det A = 1.00</span></div></section>
+<section class="under" id="tasks"><div class="desc-head"><h3 style="margin:0">小さなお手伝い</h3><div class="progress-dots" id="progressDots"><i></i><i></i><i></i></div></div><div class="task-tiles" id="taskTiles"></div><div class="tiny" id="underHint">順番に遊べるよ。いつでも自由実験にも入れる。</div></section>
+<footer class="foot">タッチ操作の試作版です。進行と植えた花は、このブラウザに保存されます。<div><button id="resetData">最初からやり直す</button> · <button id="help">この試作品について</button></div></footer>
+</main><div id="toast" class="tip-pop" role="status" aria-live="polite"></div>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const cnv=$('stage'),ctx=cnv.getContext('2d',{alpha:false});
+let W=400,H=530,dpr=1,scene='garden',task=1,free=false,drag=null,win=false,showMath=false,clock=0,toastTimer=0,voice=false,audio=null;
+const STORAGE='morph-linear-living-02',defState=()=>({completed:[],plots:[null,null,null],seeds:0,interactions:0});
+let saved=defState();try{const o=JSON.parse(localStorage.getItem(STORAGE)||'null');if(o&&Array.isArray(o.completed)&&Array.isArray(o.plots)){saved={...defState(),...o};saved.completed=saved.completed.filter(v=>[1,2,3].includes(v));saved.plots=saved.plots.slice(0,3);while(saved.plots.length<3)saved.plots.push(null)}}catch(e){}
+const save=()=>{try{localStorage.setItem(STORAGE,JSON.stringify(saved))}catch(e){}};
+const completed=n=>saved.completed.includes(n),cleared=()=>[1,2,3].filter(completed).length,unlocked=()=>Math.min(3,cleared()+1);
+const C={purple:'#d5aeff',yellow:'#f6d493',green:'#9fe5c3',red:'#ff9c9b',blue:'#9bdafd'};
+const tasks={
+ 1:{name:'はじめての光',blurb:'紫ちゃんを光の実へ。まずは赤い基底の先端を動かしてみよう。',title:'光の実をひとつ',detail:'赤い矢印の先端をドラッグして、紫ちゃんを光の輪に運ぼう。',goal:[2,1],rad:.36},
+ 2:{name:'ふたりのおつかい',blurb:'紫ちゃんと黄色い子を、それぞれの目的地へ。',title:'ふたりでおつかい',detail:'赤と青、両方の先端を動かして、ふたりをそれぞれの輪へ。',p:[1.25,2],q:[2.2,1.4],rad:.34},
+ 3:{name:'池をよけて！',blurb:'黄色い子と緑の子をお出かけさせ、紫ちゃんは池から離そう。',title:'池をよけて！',detail:'黄と緑を光るエリアへ。紫ちゃんは池の外へ。輪の真ん中が正解とは限らない。',left:[-1.8,1.4],right:[1.8,1.4],radius:.78,pond:[0,1.4],pondR:.48,bonus:[0,2.03],bonusR:.28}
+};
+let r=[1,0],b=[0,1],history=[],ready=false,bonus=false,goals=[],touchedPurple=0,activeTaskFromGarden=true;
+let folk=[{name:'紫',color:C.purple,x:.38,y:.62,phase:.7},{name:'黄',color:C.yellow,x:.71,y:.73,phase:2.2},{name:'緑',color:C.green,x:.21,y:.77,phase:4.6}];
+const rand=(n)=>{const s=Math.sin(n*127.1+98.32)*43758.5453;return s-Math.floor(s)};
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const dist=(p,q)=>Math.hypot(p[0]-q[0],p[1]-q[1]);
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]];
+const mul=(a,k)=>[a[0]*k,a[1]*k];
+const tr=p=>add(mul(r,p[0]),mul(b,p[1]));
+const purple=()=>tr([1,1]),yellow=()=>tr([2,1]),green=()=>tr([0,1]);
+const cmath=(p)=>[W*.5+p[0]*unit(),H*.55-p[1]*unit()];
+const inverse=(x,y)=>[(x-W*.5)/unit(),(H*.55-y)/unit()];
+const unit=()=>Math.min((W-56)/7.6,(H-85)/7.5);
+const fmt=v=>{const a=Math.abs(v)<.004?0:v;return a.toFixed(2)};
+const setNotice=s=>{$('stageNotice').textContent=s};
+function beep(f=520,d=.1){if(!voice)return;try{audio=audio||new(window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.0001,audio.currentTime);g.gain.exponentialRampToValueAtTime(.06,audio.currentTime+.025);g.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+d);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+d+.01)}catch(e){}}
+function toast(msg){const el=$('toast');el.textContent=msg;el.classList.add('on');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('on'),2400)}
+function resize(){const rc=cnv.getBoundingClientRect();W=rc.width;H=rc.height;dpr=Math.min(devicePixelRatio||1,2.2);cnv.width=Math.round(W*dpr);cnv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
+const ro=new ResizeObserver(resize);ro.observe(cnv);resize();
+function line(x1,y1,x2,y2,color,width=1){ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke()}
+function ellipse(x,y,rx,ry,c){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fillStyle=c;ctx.fill()}
+function glow(x,y,R,color,alpha=1){ctx.save();ctx.globalAlpha=alpha;const g=ctx.createRadialGradient(x,y,0,x,y,R);g.addColorStop(0,color);g.addColorStop(1,'#0000');ctx.fillStyle=g;ctx.fillRect(x-R,y-R,R*2,R*2);ctx.restore()}
+function tinyStar(x,y,k,color='#d3efff'){ctx.save();ctx.translate(x,y);ctx.globalAlpha=k;line(-3,0,3,0,color,1);line(0,-3,0,3,color,1);ctx.restore()}
+function bg(t,garden){const grd=ctx.createLinearGradient(0,0,W,H);grd.addColorStop(0,'#132b42');grd.addColorStop(.55,garden?'#153242':'#11243d');grd.addColorStop(1,'#0a1528');ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+ glow(W*.78,H*.25,W*.65,garden?'#51aca76c':'#6c78b16a',.27);
+ for(let i=0;i<55;i++){const x=rand(i*3+20)*W,y=rand(i*5+22)*H*.8,s=(.18+Math.sin(t*.0008+i)*.15);tinyStar(x,y,s+(i%11===0?.13:0),i%3===0?'#c9daff':'#d2f3ef')}
+}
+function jelly(x,y,r,color,t,id='purple',happy=false){const pulse=Math.sin(t*.0022+(id==='yellow'?1.1:id==='green'?2.4:0));ctx.save();const wob=pulse*r*.06,ay=y-r*.03-pulse*1.7;
+ glow(x,ay,r*2.2,color,.14);ellipse(x,y+r*.83,r*.66,r*.15,'#07132363');
+ ctx.beginPath();ctx.moveTo(x-r*.84,ay+r*.1);ctx.bezierCurveTo(x-r*.99,ay-r*.42,x-r*.58,ay-r*.98,x-r*.07,ay-r*(1.14)+wob);ctx.bezierCurveTo(x+r*.59,ay-r*1.14,x+r*.95,ay-r*.39,x+r*.86,ay+r*.17);ctx.bezierCurveTo(x+r*.84,ay+r*.77,x-r*.65,ay+r*.89,x-r*.84,ay+r*.1);ctx.closePath();const g=ctx.createLinearGradient(x-r,ay-r,x+r,ay+r);g.addColorStop(0,'#f8ffffd9');g.addColorStop(.24,color);g.addColorStop(.68,color+'da');g.addColorStop(1,'#7d9cb780');ctx.fillStyle=g;ctx.shadowBlur=r*.48;ctx.shadowColor=color;ctx.fill();ctx.shadowBlur=0;ctx.strokeStyle='#fff8';ctx.lineWidth=1;ctx.stroke();
+ ellipse(x-r*.30,ay-r*.52,r*.20,r*.10,'#ffffff84');ellipse(x-r*.39,ay-r*.35,r*.075,r*.06,'#fffffff0');
+ const blink=Math.sin(t*.0021+(id==='green'?2:0))>.997;
+ if(blink){line(x-r*.24,ay+r*.01,x-r*.13,ay+r*.01,'#203049',1.4);line(x+r*.12,ay+r*.01,x+r*.25,ay+r*.01,'#203049',1.4)}else{
+ ellipse(x-r*.20,ay-r*.015,r*.068,r*.093,'#1d3049');ellipse(x+r*.20,ay-r*.015,r*.068,r*.093,'#1d3049');ellipse(x-r*.22,ay-r*.047,r*.017,r*.022,'#fff');ellipse(x+r*.18,ay-r*.047,r*.017,r*.022,'#fff')}
+ if(happy){ctx.beginPath();ctx.arc(x,ay+r*.12,r*.12,.2,Math.PI-.2);ctx.lineWidth=1.6;ctx.strokeStyle='#35465d';ctx.stroke()}else ellipse(x,ay+r*.23,r*.035,r*.021,'#354b65');
+ for(let j=0;j<3;j++){const sx=x+Math.cos(j*2.8+t*.0006)*r*.61,sy=ay+Math.sin(j*2.8+t*.0006)*r*.55;tinyStar(sx,sy,.27,'#fff')}
+ ctx.restore()}
+function flower(x,y,scale,kind=0,t=0){ctx.save();ctx.translate(x,y);ctx.scale(scale,scale);const sway=Math.sin(t*.0009+x)*2;line(0,13,sway,-21,'#75ae9b',3);ellipse(-10,-2,12,5,'#76af96');ellipse(10,-12,12,5,'#80c4a6');for(let j=0;j<5;j++){const a=j*Math.PI*2/5;ellipse(sway+Math.cos(a)*11,-30+Math.sin(a)*10,10,7,kind===1?'#b9bbe9':kind===2?'#a1d9b9':'#e4c3ee')}glow(sway,-30,33,'#e9da92b0',.5);ellipse(sway,-30,6,6,'#f9dc94');ctx.restore()}
+function rounded(x,y,w,h,rad,fill){ctx.beginPath();ctx.roundRect(x,y,w,h,rad);ctx.fillStyle=fill;ctx.fill()}
+function garden(t){bg(t,true);
+ // distant rolling hills and village silhouettes
+ ctx.fillStyle='#183e4a';ctx.beginPath();ctx.moveTo(0,H*.57);ctx.bezierCurveTo(W*.25,H*.40,W*.44,H*.55,W*.65,H*.46);ctx.bezierCurveTo(W*.83,H*.38,W*.9,H*.43,W,H*.39);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.fill();
+ ctx.fillStyle='#21504f';ctx.beginPath();ctx.moveTo(0,H*.64);ctx.bezierCurveTo(W*.20,H*.54,W*.48,H*.64,W*.75,H*.52);ctx.quadraticCurveTo(W*.93,H*.48,W,H*.53);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.fill();
+ // distant quiet little house
+ const hx=W*.12,hy=H*.44;glow(hx+42,hy+70,72,'#f4d4a34a',.5);rounded(hx,hy+18,90,91,8,'#3a5c65');rounded(hx+11,hy+35,68,67,5,'#70908a');ctx.beginPath();ctx.moveTo(hx-13,hy+22);ctx.lineTo(hx+42,hy-23);ctx.lineTo(hx+103,hy+22);ctx.closePath();ctx.fillStyle='#6f7e89';ctx.fill();ctx.strokeStyle='#9fa2ac';ctx.lineWidth=1.5;ctx.stroke();rounded(hx+55,hy+46,18,23,3,'#f5ddaa');glow(hx+63,hy+56,37,'#fce6a29c',.5);rounded(hx+19,hy+69,22,33,4,'#395562');
+ // little distant green tree
+ for(const [xx,yy,size] of [[W*.82,H*.46,36],[W*.89,H*.53,24],[W*.66,H*.45,18]]){line(xx,yy+size*.8,xx,yy+size*1.5,'#536b5d',5);glow(xx,yy, size*2,'#5ebba35d',.3);ellipse(xx,yy,size,size*.82,'#315d5a');ellipse(xx-8,yy-7,size*.58,size*.55,'#487d6d')}
+ // lawn / miniature island
+ glow(W*.5,H*.84,W*.6,'#60c7a65f',.23);ellipse(W*.5,H*.82,W*.64,H*.31,'#123442');ellipse(W*.50,H*.79,W*.62,H*.30,'#2a6258');ellipse(W*.49,H*.75,W*.59,H*.27,'#326c5b');
+ // path stones
+ for(let j=0;j<7;j++){const x=W*.51+Math.sin(j*.6)*W*.16,y=H*.57+j*H*.057;ellipse(x,y,13+j*1.1,5+j*.6,'#cfcbad50')}
+ // shallow pond far right
+ ellipse(W*.88,H*.79,W*.19,H*.055,'#154a5f');ellipse(W*.88,H*.781,W*.17,H*.044,'#63b7bf48');glow(W*.88,H*.79,49,'#9ce3f177',.2);
+ // fireflies & tiny plants
+ for(let j=0;j<12;j++){const x=rand(j+51)*W,y=H*(.61+rand(j+64)*.30);ellipse(x,y+5,5,3,'#365f53');line(x,y+5,x,y-5,'#72ba91',1.3);ellipse(x-3,y-5,4,3,'#69b698');if(j%3===0){glow(x,y-9,16,'#f4deab99',.25);ellipse(x,y-8,2.5,2.5,'#f5dba7')}}
+ // plots are three chosen positions
+ const places=plotPos();places.forEach((p,i)=>{const item=saved.plots[i];if(item!==null){glow(p[0],p[1]-19,57,'#f2d2f291',.35);flower(p[0],p[1]-2,1.08+(i===1?.05:0),i,t)}else{ctx.save();ctx.setLineDash([5,6]);ctx.strokeStyle=saved.seeds?'#f4dbadbf':'#8bbfa76a';ctx.lineWidth=saved.seeds?2:1;ctx.beginPath();ctx.ellipse(p[0],p[1]+8,25,11,0,0,Math.PI*2);ctx.stroke();ctx.restore();if(saved.seeds){glow(p[0],p[1],37,'#f9d89183',.28);ctx.fillStyle='#ebdbb0';ctx.font='18px sans-serif';ctx.textAlign='center';ctx.fillText('＋',p[0],p[1]+6)}}});
+ // characters wander gently; lavender always and others after milestones
+ const names=['purple','yellow','green'];folk.forEach((f,i)=>{if(i>=cleared()+1)return;const tx=W*f.x+Math.sin(t*.00025*(1+i*.23)+i)*W*.028,ty=H*f.y+Math.sin(t*.0015+f.phase)*3;const selected=(Date.now()-touchedPurple<1600)&&i===0;jelly(tx,ty,clamp(W*.074,22,35),f.color,t,names[i],selected);if(selected){ctx.fillStyle='#ffd9ef';ctx.font='18px sans-serif';ctx.textAlign='center';ctx.fillText('♥',tx,ty-40)}});
+ // house lantern
+ glow(hx+63,hy+55,48,'#f8dea782',.26);
+ // ambient message
+ if(cleared()===0){const pos=[W*.40,H*.52];bubble(pos[0],pos[1],'ひかりの実、みつけた…！')}
+}
+function bubble(x,y,text){ctx.save();ctx.font='11px sans-serif';const tw=ctx.measureText(text).width;const ww=tw+27;rounded(x-ww*.5,y-18,ww,32,16,'#f9f1e5ef');ctx.beginPath();ctx.moveTo(x+6,y+11);ctx.lineTo(x+14,y+24);ctx.lineTo(x+21,y+11);ctx.closePath();ctx.fillStyle='#f9f1e5ef';ctx.fill();ctx.fillStyle='#394657';ctx.textAlign='center';ctx.fillText(text,x,y+2);ctx.restore()}
+function plotPos(){return [[W*.37,H*.67],[W*.68,H*.79],[W*.17,H*.80]]}
+function worldLine(p,q,c,w=1){const a=cmath(p),b=cmath(q);line(a[0],a[1],b[0],b[1],c,w)}
+function zone(pt,R,color,title,ok){const [x,y]=cmath(pt),rad=R*unit();glow(x,y,rad*2,color,.08);ctx.beginPath();ctx.arc(x,y,rad,0,Math.PI*2);ctx.fillStyle=color+'1b';ctx.fill();ctx.lineWidth=ok?2.6:1.8;ctx.strokeStyle=ok?'#baffdb':color;ctx.setLineDash(ok?[]:[6,5]);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=ok?'#d4ffe4':color;ctx.font=`${Math.max(10,Math.min(11,W*.028))}px sans-serif`;ctx.textAlign='center';ctx.fillText(title,x,y-rad-9);if(ok){ctx.font='15px sans-serif';ctx.fillText('✓',x+rad*.67,y-rad*.64)}}
+function pond(pt,R){const [x,y]=cmath(pt),rad=R*unit();glow(x,y,rad*2.1,'#6dbacf91',.25);ellipse(x,y,rad,rad,'#1a4e69');ctx.save();ctx.setLineDash([4,5]);ctx.beginPath();ctx.arc(x,y,rad,0,Math.PI*2);ctx.strokeStyle='#b2e6fd9f';ctx.lineWidth=2;ctx.stroke();ctx.restore();ctx.fillStyle='#a3daf2';ctx.textAlign='center';ctx.font='10px sans-serif';ctx.fillText('池',x,y+4)}
+function tuning(t){bg(t,false);
+ const grad=ctx.createLinearGradient(0,H*.43,0,H);grad.addColorStop(0,'#31535e00');grad.addColorStop(1,'#24465780');ctx.fillStyle=grad;ctx.fillRect(0,H*.4,W,H*.6);
+ // distant garden silhouette, kept unwarped behind the temporary field
+ ctx.save();ctx.globalAlpha=.27;ellipse(W*.5,H*.95,W*.70,H*.14,'#457e6a');rounded(W*.10,H*.71,W*.18,H*.14,5,'#4a6972');ctx.beginPath();ctx.moveTo(W*.075,H*.72);ctx.lineTo(W*.19,H*.63);ctx.lineTo(W*.30,H*.72);ctx.closePath();ctx.fillStyle='#7193a3';ctx.fill();ctx.restore();
+ // fixed mathematical lattice
+ for(let i=-5;i<=5;i++){worldLine([-6,i],[6,i],'#8fa7bd17',1);worldLine([i,-6],[i,6],'#8fa7bd17',1)}
+ // transformed grid reveals the 2 basis columns; guides overlay
+ ctx.save();ctx.beginPath();ctx.rect(0,0,W,H);ctx.clip();
+ for(let i=-5;i<=5;i++){worldLine(tr([-6,i]),tr([6,i]),'#a6c9f044',1.15);worldLine(tr([i,-6]),tr([i,6]),'#a6c9f044',1.15)}
+ worldLine([-5,0],[5,0],'#a2b9d363',1.25);worldLine([0,-5],[0,5],'#a2b9d363',1.25);
+ // goal regions always stay fixed in the physical task space
+ if(!free){if(task===1)zone(tasks[1].goal,tasks[1].rad,C.purple,'ひかりの実',goals[0]);
+ if(task===2){zone(tasks[2].p,tasks[2].rad,C.purple,'紫',goals[0]);zone(tasks[2].q,tasks[2].rad,C.yellow,'黄',goals[1]);}
+ if(task===3){zone(tasks[3].left,tasks[3].radius,C.green,'緑の木陰',goals[0]);zone(tasks[3].right,tasks[3].radius,C.yellow,'黄の日なた',goals[1]);pond(tasks[3].pond,tasks[3].pondR);zone(tasks[3].bonus,tasks[3].bonusR,C.purple,'お花（おまけ）',bonus)}}
+ // hint line connecting citizens to a common linear relationship
+ if((task===3&&!free)||free){const gg=cmath(green()),yy=cmath(yellow());ctx.setLineDash([5,6]);line(gg[0],gg[1],yy[0],yy[1],'#ddd2ff75',1.8);ctx.setLineDash([])}
+ // position of basis vectors and inhabitants
+ const o=cmath([0,0]),rr=cmath(r),bb=cmath(b),pu=cmath(purple()),ye=cmath(yellow()),gr=cmath(green());
+ ctx.beginPath();ctx.moveTo(...o);ctx.lineTo(...rr);ctx.lineTo(...pu);ctx.lineTo(...bb);ctx.closePath();ctx.fillStyle='#b9adff0d';ctx.fill();ctx.strokeStyle='#cdb9fa33';ctx.lineWidth=1;ctx.stroke();
+ worldLine([0,0],r,C.red,3.6);worldLine([0,0],b,C.blue,3.6);
+ glow(rr[0],rr[1],28,C.red,.19);glow(bb[0],bb[1],28,C.blue,.19);
+ // jelly residents are not the red/blue basis vectors!
+ const showY=free||task>=2,showG=free||task>=3;
+ if(showG)jelly(gr[0],gr[1],19,C.green,t,'green',!free&&goals[0]);
+ if(showY)jelly(ye[0],ye[1],19,C.yellow,t,'yellow',!free&&(task===2?goals[1]:goals[1]));
+ jelly(pu[0],pu[1],22,C.purple,t,'purple',!free&&(task===1?goals[0]:task===2?goals[0]:goals[2]));
+ // handles always on top, even when they overlap the creatures
+ basisTip(rr[0],rr[1],C.red,'赤',drag==='r');basisTip(bb[0],bb[1],C.blue,'青',drag==='b',task===1&&!free);
+ ellipse(o[0],o[1],3,3,'#e2f5ff');
+ ctx.restore();
+}
+function basisTip(x,y,color,label,selected=false,disabled=false){glow(x,y,27,color,disabled?.13:.30);ctx.beginPath();ctx.arc(x,y,12,0,Math.PI*2);ctx.fillStyle=disabled?'#345267':color;ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=selected?'#fff':'#e7f4f3c0';ctx.stroke();ctx.fillStyle='#152b3b';ctx.font='bold 10px sans-serif';ctx.textAlign='center';ctx.fillText(label,x,y+3.8);}
+function paint(t){clock=t;ctx.setTransform(dpr,0,0,dpr,0,0);if(scene==='garden')garden(t);else tuning(t);requestAnimationFrame(paint)}requestAnimationFrame(paint);
+function matrixUpdate(){const arr=[r[0],b[0],r[1],b[1]];['a11','a12','a21','a22'].forEach((id,i)=>$(id).textContent=fmt(arr[i]));$('detLabel').textContent='det A = '+fmt(r[0]*b[1]-r[1]*b[0]);if(free){$('mathHint').textContent='紫 = 赤 + 青 ／ 黄 = 2赤 + 青 ／ 緑 = 青';}else if(task===3){$('mathHint').textContent='紫は、いつも黄と緑の中点にいる。';}else{$('mathHint').textContent='赤と青の矢印が、行列Aの2列になる。';}}
+function goalTest(){if(free){goals=[];bonus=false;ready=false;return;}if(task===1){goals=[dist(purple(),tasks[1].goal)<=tasks[1].rad];bonus=dist(purple(),tasks[1].goal)<.14;}
+ if(task===2){goals=[dist(purple(),tasks[2].p)<=tasks[2].rad,dist(yellow(),tasks[2].q)<=tasks[2].rad];bonus=dist(purple(),tasks[2].p)<.15&&dist(yellow(),tasks[2].q)<.15;}
+ if(task===3){goals=[dist(green(),tasks[3].left)<=tasks[3].radius,dist(yellow(),tasks[3].right)<=tasks[3].radius,dist(purple(),tasks[3].pond)>=tasks[3].pondR+.07];bonus=dist(purple(),tasks[3].bonus)<=tasks[3].bonusR;}
+ ready=goals.every(Boolean);matrixUpdate();updateGoalInfo()}
+function updateGoalInfo(){if(scene!=='tune'||free)return;const labels=task===1?['紫ちゃんが届いた']:task===2?['紫ちゃんが届いた','黄色い子が届いた']:['緑の子が木陰へ','黄色い子が日なたへ','紫ちゃんが池の外'];$('goalStatus').innerHTML=labels.map((s,i)=>`<span class="goal ${goals[i]?'ok':''}">${goals[i]?'✓':'○'} ${s}</span>`).join('');const goBtn=$('goBtn');if(goBtn){goBtn.disabled=!ready;goBtn.textContent=ready?'✦ お手伝い完了！':`あと ${goals.filter(x=>!x).length} つの条件`;}
+ if(ready){setNotice('みんなの準備ができた！ 下のボタンで完了 ✦')}else if(task===3){setNotice('紫ちゃんは、黄と緑のちょうど真ん中')}
+}
+function stageProgress(){const n=cleared();$('progressDots').innerHTML=[1,2,3].map(i=>`<i class="${completed(i)?'done':''}"></i>`).join('');$('taskTiles').innerHTML=[1,2,3].map(i=>`<button class="chip ${i===task&&scene==='tune'&&!free?'active':''} ${i>unlocked()?'locked':''}" data-task="${i}" ${i>unlocked()?'disabled':''}>${completed(i)?'✓':i>unlocked()?'🔒':`0${i}`} ${tasks[i].name}</button>`).join('');$('taskTiles').querySelectorAll('[data-task]').forEach(el=>el.addEventListener('click',()=>enter(+el.dataset.task,false)));$('underHint').textContent=`${n}/3 のお手伝いを体験済み。クリアしたものはいつでも再挑戦できる。`}
+function btn(text,fn,cls=''){const b=document.createElement('button');b.className='btn '+cls;b.textContent=text;b.addEventListener('click',fn);return b}
+function homeUI(){scene='garden';free=false;drag=null;win=false;cnv.classList.remove('in-tune','dragging');$('result').classList.remove('show');$('eyebrow').textContent='SMALL WORLD · HOME';$('title').textContent='きょうの小さな庭';$('statusTag').textContent='庭でひとやすみ';$('topLeft').textContent='✦ いつもの、やさしい場所';$('topRight').innerHTML=`花 <b>${saved.plots.filter(v=>v!==null).length}</b> / 3`;
+ const n=cleared();$('subTitle').textContent=saved.seeds?'光のたねを植えてみよう':n===3?'小さな庭に、光が増えた':n?'紫ちゃんたちの毎日':'紫ちゃんが、何か見つけたみたい';$('subInfo').textContent=`お手伝い ${n} / 3`;
+ $('description').textContent=saved.seeds?'光る輪をタップして植える場所を選ぼう。庭の配置は3か所だけ。':n===3?'お手伝いは全部体験できたよ。繰り返し遊んでも、庭を眺めるだけでも大丈夫。':n?'花が増えて、友達も遊びに来た。次のお手伝いに挑戦してみよう。':'庭の紫ちゃんをタップすると反応するよ。最初のお手伝いでは、赤い基底を動かして光の実を取りに行こう。';
+ $('goalStatus').classList.add('hide');$('matrixDetail').classList.remove('visible');$('actions').replaceChildren();$('actions').append(btn(n===0?'紫ちゃんを手伝う →':n===3?'お手伝いをもう一度 →':'次のお手伝いへ →',()=>enter(unlocked(),false),'main wide'));$('actions').append(btn('自由に調律する',()=>enter(1,true),'ghost'));setNotice(saved.seeds?'光る植え場所をタップすると花が咲くよ ✦':n?'紫ちゃんたちをタップしてみよう ✦':'紫ちゃんをタップしてみよう ✦');stageProgress()}
+function enter(i,isFree){task=clamp(i,1,3);scene='tune';free=!!isFree;win=false;drag=null;history=[];r=[1,0];b=[0,1];cnv.classList.add('in-tune');$('result').classList.remove('show');$('eyebrow').textContent=isFree?'FREE TUNING · LAB':`TUNING · 0${task}`;$('title').textContent=isFree?'自由な調律室':tasks[task].title;$('statusTag').textContent=isFree?'実験中':'一時的な調律';$('topLeft').textContent=isFree?'✦ 何度でも試してみよう':'✦ 庭の一角に、光のフィールド';$('topRight').innerHTML=isFree?'自由実験':'🔴 赤 ／ 🔵 青';$('subTitle').textContent=isFree?'世界のかたちを、自由に試す':tasks[task].name;$('subInfo').textContent=isFree?'保存されるのは発見ではなく暮らし':'光の調律';$('description').textContent=isFree?'赤と青の先端をドラッグしてみよう。紫・黄・緑の位置は、2本の基底から決まる。':tasks[task].detail;$('goalStatus').classList.toggle('hide',isFree);$('matrixDetail').classList.toggle('visible',showMath);$('actions').replaceChildren();
+ if(isFree){$('actions').append(btn('庭にもどる',homeUI,'ghost'));$('actions').append(btn('最初の形へ',resetBasis,'ghost'));$('actions').append(btn(showMath?'数式を隠す':'数式を見る',toggleMath,'ghost'))}else{$('actions').append(btn('お手伝い完了！',finish,'main wide'));$('actions').lastElementChild.id='goBtn';$('actions').append(btn('やり直す',resetBasis,'ghost slim'));$('actions').append(btn('庭へ',homeUI,'ghost slim'));$('actions').append(btn(showMath?'数式 −':'数式 ＋',toggleMath,'ghost slim'))}
+ goalTest();stageProgress();setNotice(isFree?'赤と青は操作ハンドル。紫ちゃんは赤＋青。':task===1?'赤い基底の丸を右へ動かそう':task===2?'2匹とも同時に動くよ': '黄と緑の中点にいる紫ちゃんを、池の外へ')}
+function resetBasis(){r=[1,0];b=[0,1];history=[];goalTest();setNotice('最初のかたちに戻したよ');beep(410,.08)}
+function toggleMath(){showMath=!showMath;$('matrixDetail').classList.toggle('visible',showMath);const buttons=$('actions').querySelectorAll('button');buttons[buttons.length-1].textContent=showMath?(free?'数式を隠す':'数式 −'):(free?'数式を見る':'数式 ＋');matrixUpdate()}
+function finish(){if(scene!=='tune'||free||!ready||win)return;win=true;beep(660,.2);setTimeout(()=>beep(900,.18),140);const first=!completed(task);if(first){saved.completed.push(task);saved.seeds=Math.min(3-saved.plots.filter(x=>x!==null).length,saved.seeds+1);save()}
+ $('resultTitle').textContent=task===1?'光の実がとどいた！':task===2?'ふたりのおつかい、大成功！':'みんな、池をよけられた！';$('resultText').innerHTML=(task===1?'紫ちゃんは嬉しそう。光のたねをひとつ持って、庭に帰ろう。':task===2?'紫ちゃんと黄色い子が、それぞれの場所に行けたよ。緑の子も、庭に遊びに来た。':'3匹の位置は自由には決められない。それでも、みんなの希望を叶えられたね。')+(bonus?'<br>✦ ひと工夫で、さらに素敵な光が生まれた！':'');$('resultExtra').textContent=first?'光のたね ＋1 ／ 新しいお手伝いが開放':'何度でも遊び直せるよ';$('result').classList.add('show')}
+$('resultBack').addEventListener('click',()=>{homeUI();toast(saved.seeds?'庭の光る輪をタップして、花を植えてみよう':'庭に戻ってきたよ ✦')});
+// pointer handling: canvas CSS uses touch-action:none only in tuning mode.
+const ppos=e=>{const rc=cnv.getBoundingClientRect();return [e.clientX-rc.left,e.clientY-rc.top]};
+cnv.addEventListener('pointerdown',e=>{const p=ppos(e);if(scene==='garden'){try{cnv.setPointerCapture(e.pointerId)}catch(_){}drag={kind:'garden',start:p};return}e.preventDefault();const R=cmath(r),B=cmath(b);const dr=dist(p,R),db=dist(p,B);const first=(dr<=db?'r':'b');const firstDistance=Math.min(dr,db);const eligible=task!==1||free?first:'r';if((task===1&&!free?dr:firstDistance)<Math.max(26,W*.065)){drag=eligible;cnv.classList.add('dragging');try{cnv.setPointerCapture(e.pointerId)}catch(_){}beep(drag==='r'?400:530,.05)}else{drag=null;setNotice('赤か青の丸を指でつかんで動かしてね')}} ,{passive:false});
+cnv.addEventListener('pointermove',e=>{if((drag!=='r'&&drag!=='b')||scene!=='tune')return;e.preventDefault();const p=ppos(e);const q=inverse(...p);const x=clamp(q[0],-3.6,3.6),y=clamp(q[1],-2.5,3.65);if(drag==='r')r=[x,y];else b=[x,y];goalTest()},{passive:false});
+const up=e=>{if(!drag)return;if(drag==='garden'&&scene==='garden'){const p=ppos(e),spots=plotPos();let planted=false;for(let i=0;i<3;i++){if(saved.seeds>0&&saved.plots[i]===null&&dist(spots[i],p)<43){saved.plots[i]={time:Date.now(),kind:i};saved.seeds--;save();beep(820,.2);planted=true;toast('小さな光の花が咲いた ✦');homeUI();break;}}if(!planted){const folkNames=['紫','黄','緑'];for(let i=0;i<cleared()+1;i++){const f=folk[i],fp=[W*f.x+Math.sin(clock*.00025*(1+i*.23)+i)*W*.028,H*f.y+Math.sin(clock*.0015+f.phase)*3];if(dist(fp,p)<55){touchedPurple=Date.now();saved.interactions++;save();beep(580+i*120,.12);toast(folkNames[i]+'ちゃんが、ぷるんと揺れた ♡');break}}}}
+ if(drag==='r'||drag==='b'){goalTest();cnv.classList.remove('dragging')}drag=null};
+cnv.addEventListener('pointerup',up);cnv.addEventListener('pointercancel',()=>{drag=null;cnv.classList.remove('dragging')});cnv.addEventListener('lostpointercapture',()=>{drag=null;cnv.classList.remove('dragging')});
+$('sound').addEventListener('click',()=>{voice=!voice;$('sound').textContent=voice?'♫':'♪';$('sound').setAttribute('aria-label',voice?'音をオフにする':'音をオンにする');if(voice)beep(650,.12);toast(voice?'小さな音をオンにしたよ':'音をオフにしたよ')});
+$('resetData').addEventListener('click',()=>{if(!confirm('3つのお手伝いの進行・庭の花を消して、最初からやり直しますか？'))return;saved=defState();save();task=1;homeUI();toast('最初の庭に戻ったよ')});
+$('help').addEventListener('click',()=>alert('ひかりのすみか v0.2｜試遊用のブラウザゲームです。\n\n① 最初は紫ちゃんを光へ。\n② 次は紫ちゃんと黄色い子を同時に移動。\n③ 黄と緑をそれぞれの領域へ送り、紫ちゃんを池から離す。紫ちゃんは黄と緑の中点です。\n\n赤・青の丸が基底ベクトルの操作ハンドル。住民は行列の法則に従って動きます。\n\n調律空間は一時的なもの。帰宅すると元の庭へ戻り、花だけが増えます。庭でキャラクターをタップすると反応します。数式表示や自由実験もあります。\n\n現在は遊びの核を検証するための試作で、細かなアニメーションや数学のUnlockは今後の対象です。'));
+window.__morphPlaytest={state:()=>({scene,task,free,r:[...r],b:[...b],goals:[...goals],ready,bonus,saved:JSON.parse(JSON.stringify(saved))}),enter,resetBasis,solve:(s)=>{if(s===1){r=[2,0];b=[0,1];}if(s===2){r=[.95,-.6];b=[.3,2.6];}if(s===3){r=[1.8,0];b=[-1.8,2.05];}goalTest();return{ready,bonus,goals}}};
+homeUI();
+})();
+</script>
+</body></html>
